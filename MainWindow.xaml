@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="address" HorizontalAlignment="Left" Height="23" Margin="23,77,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="dotsFrequency" HorizontalAlignment="Left" Height="23" Margin="23,124,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="filename" HorizontalAlignment="Left" Height="23" Margin="23,169,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Входные данные" HorizontalAlignment="Left" Margin="23,44,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="address" Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="23,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="dotsCount" Text="{Binding Path=DotsCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="23,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="filename" Text="{Binding Path=Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="23,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="Входные данные" HorizontalAlignment="Left" Margin="23,8,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Получить данные" HorizontalAlignment="Left" Margin="23,229,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
+        <Label x:Name="label_Copy" Content="Адрес" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Точки" HorizontalAlignment="Left" Margin="23,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy2" Content="Имя файла" HorizontalAlignment="Left" Margin="23,167,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

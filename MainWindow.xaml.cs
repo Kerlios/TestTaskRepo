@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TestTask.ViewModels;
 namespace TestTask
 {
     /// <summary>
@@ -23,6 +23,13 @@ namespace TestTask
         public MainWindow()
         {
             InitializeComponent();
+            MainWindowViewModel mainVM = new MainWindowViewModel();
+            this.DataContext = mainVM;
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
