@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestTask.ViewModels;
+
+using BruTile.Predefined;
+// using BruTile.
+using Mapsui.Layers;
 namespace TestTask
 {
     /// <summary>
@@ -20,16 +24,20 @@ namespace TestTask
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel mainVM;
         public MainWindow()
         {
             InitializeComponent();
-            MainWindowViewModel mainVM = new MainWindowViewModel();
+            mainVM = new MainWindowViewModel();
             this.DataContext = mainVM;
+
+            MyMapControl.Map.Layers.Add(new TileLayer(KnownTileSources.Create()));
+            // MyMapControl.Map.Se
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            mainVM.Search();
         }
     }
 }

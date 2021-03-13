@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace OpenStreetMapLib
 {
-    public class Class1
+    public class Main_OSM
     {
+        public void GetMap()
+        {
+            // получает карту в формате png или svg
+        }
     }
 }

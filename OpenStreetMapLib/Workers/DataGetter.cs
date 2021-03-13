@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestTask.Models
+namespace OpenStreetMapLib.Models
 {
-    class InputReader
+    class DataGetter
     {
-        public InputReader()
-        {
-            Console.WriteLine();
-        }
+
     }
 }

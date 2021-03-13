@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xaml="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
         xmlns:local="clr-namespace:TestTask"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -15,6 +16,9 @@
         <Label x:Name="label_Copy" Content="Адрес" HorizontalAlignment="Left" Margin="23,46,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy1" Content="Точки" HorizontalAlignment="Left" Margin="23,110,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy2" Content="Имя файла" HorizontalAlignment="Left" Margin="23,167,0,0" VerticalAlignment="Top"/>
+        <Grid HorizontalAlignment="Left" Height="344" Margin="180,46,0,0" VerticalAlignment="Top" Width="580">
+            <xaml:MapControl Name="MyMapControl"></xaml:MapControl>
+        </Grid>
 
     </Grid>
 </Window>
