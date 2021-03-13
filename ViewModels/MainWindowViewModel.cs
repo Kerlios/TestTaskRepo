@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http;
 using RestSharp;
 
 
@@ -14,6 +15,7 @@ namespace TestTask.ViewModels
         private string _address;
         private int _dotsCount;
         private string _filename;
+        private static readonly HttpClient _client = new HttpClient();
 
         public string Address
         {
@@ -54,22 +56,37 @@ namespace TestTask.ViewModels
             }
         }
 
-        public void Search()
+        public async void Search()
         {
-            // perform search
+            // Call asynchronous network methods in a try/catch block to handle exceptions.
             var uri = "https://nominatim.openstreetmap.org/search?q=";
-            uri += Address;
-            var client = new RestClient(uri);
-            var request = new RestRequest(Method.GET);
-            //request.AddParameter("q", Address, ParameterType.QueryString);
-            
-            IRestResponse response = client.Execute(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            uri += Address+"&format=json&polygon_geojson=1";
+            try
             {
-                
+                string responseBody = await _client.GetStringAsync(uri);
+                Console.WriteLine(responseBody);
             }
-            else
-                throw new Exception("Expected response status code OK, received response status code " + response.StatusCode);
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+
+            // perform search
+            //var uri = "https://nominatim.openstreetmap.org/search?q=";
+            //uri += Address;
+            //var client = new RestClient(uri);
+            //var request = new RestRequest(Method.GET);
+            ////request.AddParameter("q", Address, ParameterType.QueryString);
+
+            //IRestResponse response = client.Execute(request);
+            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            //{
+
+            //}
+            //else
+            //    throw new Exception("Expected response status code OK, received response status code " + response.StatusCode);
         }
     }
 }
