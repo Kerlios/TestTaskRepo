@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http;
-using RestSharp;
 
 
 namespace TestTask.ViewModels
 {
-    class MainWindowViewModel:BaseViewModel
+    class MainWindowViewModel : BaseViewModel
     {
         private string _address;
         private int _dotsCount;
         private string _filename;
-        private static readonly HttpClient _client = new HttpClient();
+        private static HttpClient _client = new HttpClient();
 
         public string Address
         {
@@ -61,10 +60,13 @@ namespace TestTask.ViewModels
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             var uri = "https://nominatim.openstreetmap.org/search?q=";
             uri += Address+"&format=json&polygon_geojson=1";
+            _client.DefaultRequestHeaders.Add("user-agent", "Test C# Project v1");
+
             try
             {
-                string responseBody = await _client.GetStringAsync(uri);
-                Console.WriteLine(responseBody);
+                var responseBody = await _client.GetAsync(uri);
+                var item = responseBody.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody.Content);
             }
             catch (HttpRequestException e)
             {
