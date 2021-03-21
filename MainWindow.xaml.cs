@@ -31,7 +31,8 @@ namespace TestTask
             mainVM = new MainWindowViewModel();
             this.DataContext = mainVM;
 
-            MyMapControl.Map.Layers.Add(new TileLayer(KnownTileSources.Create()));
+            MyMapControl.Map.Layers.Add(new TileLayer(KnownTileSources.Create(source:KnownTileSource.OpenStreetMap)));
+            
             // MyMapControl.Map.Se
         }
 

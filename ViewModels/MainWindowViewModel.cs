@@ -66,29 +66,15 @@ namespace TestTask.ViewModels
             {
                 var responseBody = await _client.GetAsync(uri);
                 var item = responseBody.Content.ReadAsStringAsync();
+                var str = item.Result;
                 Console.WriteLine(responseBody.Content);
+                JsonConvert.DeserializeObject<object>(str);
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
-
-
-            // perform search
-            //var uri = "https://nominatim.openstreetmap.org/search?q=";
-            //uri += Address;
-            //var client = new RestClient(uri);
-            //var request = new RestRequest(Method.GET);
-            ////request.AddParameter("q", Address, ParameterType.QueryString);
-
-            //IRestResponse response = client.Execute(request);
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //{
-
-            //}
-            //else
-            //    throw new Exception("Expected response status code OK, received response status code " + response.StatusCode);
         }
     }
 }
