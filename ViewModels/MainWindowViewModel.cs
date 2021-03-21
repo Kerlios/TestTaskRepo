@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http;
-
+using System.Reflection;
+using System.Reflection.Emit;
 
 namespace TestTask.ViewModels
 {
@@ -59,7 +60,7 @@ namespace TestTask.ViewModels
         {
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             var uri = "https://nominatim.openstreetmap.org/search?q=";
-            uri += Address+"&format=json&polygon_geojson=1";
+            uri += Address + "&format=json&polygon_geojson=1";
             _client.DefaultRequestHeaders.Add("user-agent", "Test C# Project v1");
 
             try
@@ -75,6 +76,36 @@ namespace TestTask.ViewModels
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
             }
+        }
+
+        public void LoadLibrary()
+        {
+            // загрузить dll
+            // OpenStreetMapLib.dll
+            
+            AssemblyName an = AssemblyName.GetAssemblyName(@"C:\Users\Aleksandr\source\repos\TestTaskRepo\OpenStreetMapLib\bin\Debug\OpenStreetMapLib.dll");
+
+            Assembly someAssembly = Assembly.Load(an);
+
+            if (someAssembly != null)
+            {
+                Type[] types = someAssembly.GetTypes(); // получение всех типов, находящихся в сборке
+                Console.WriteLine("Тип в сборке: " + types[0].Name);
+                foreach (Type type in types) // производим поиск всех ОПРЕДЕЛЕНИЙ интерфейсов
+                {
+                    if (type.IsClass && type.Name=="Main_OSM")
+                    {
+                        Console.WriteLine("Полное имя типа: " + type.Name);
+                    }
+                }
+            }
+
+            Type myclass = someAssembly.GetType("OpenStreetMapLib.Main_OSM");
+            MethodInfo[] myMethod = myclass.GetMethods();
+
+            var mainosm = Activator.CreateInstance(myclass);
+
+            myMethod[0].Invoke(mainosm,null);
         }
     }
 }

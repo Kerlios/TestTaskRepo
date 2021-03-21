@@ -8,7 +8,7 @@ namespace OpenStreetMapLib
 {
     /* todo: 
      * Классы для абстрактной бибилотеки
-     * Connector (подключается к узлу MapSite; загружает данные MapData в виде строки, признак данных - DataType)
+     * DataGetter (подключается к узлу MapSite; загружает данные MapData в виде строки, признак данных - DataType)
      * Deserialiser (получает данные от Connector, десериализует последовательность координат в тип "Коллекция")
      * Recipient (отправляет данные, представленные коллекцией в основную программу)
      * 
@@ -21,7 +21,8 @@ namespace OpenStreetMapLib
     {
         public void GetMap()
         {
-            // получает карту в формате png или svg
+            // тестовая 
+            Console.WriteLine("It's work!");
         }
     }
 }

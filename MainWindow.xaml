@@ -19,6 +19,7 @@
         <Grid HorizontalAlignment="Left" Height="344" Margin="180,46,0,0" VerticalAlignment="Top" Width="580">
             <xaml:MapControl Name="MyMapControl"></xaml:MapControl>
         </Grid>
+        <Button x:Name="button1" Content="Загрузить библиотеку" HorizontalAlignment="Left" Margin="23,285,0,0" VerticalAlignment="Top" Width="132" Click="button1_Click"/>
 
     </Grid>
 </Window>

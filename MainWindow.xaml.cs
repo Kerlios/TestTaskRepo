@@ -40,5 +40,10 @@ namespace TestTask
         {
             mainVM.Search();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            mainVM.LoadLibrary();
+        }
     }
 }
