@@ -13,10 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestTask.ViewModels;
-
 using BruTile.Predefined;
-// using BruTile.
 using Mapsui.Layers;
+
 namespace TestTask
 {
     /// <summary>
